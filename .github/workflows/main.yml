@@ -23,12 +23,15 @@ jobs:
           pip install -r requirements.txt
           pip install nbconvert
           pip install papermill
+          python -m ipykernel install --user --name=python3
 
       - name: Ejecutar Cuaderno A
-        run: papermill --kernel python3 cuaderno_A.ipynb output_A.ipynb
+        run: papermill cuaderno_A.ipynb output_A.ipynb --kernel python3
 
+  
       - name: Ejecutar Cuaderno B
-        run: papermill --kernel python3 cuaderno_B.ipynb output_B.ipynb
+        run: papermill cuaderno_B.ipynb output_B.ipynb --kernel python3
+
 
       - name: Commit y Push de Resultados
         run: |
